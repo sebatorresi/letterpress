@@ -1,0 +1,245 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5f2ee;
+  --ink: #1a1a18;
+  --ink-secondary: #888;
+  --accent: #c62b1e;
+  --panel-bg: #1a1a18;
+  --panel-text: #f5f2ee;
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 14px;
+}
+
+#app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+/* Header */
+.header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.header__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+}
+
+.header__subtitle {
+  font-size: 12px;
+  color: var(--ink-secondary);
+  letter-spacing: 0.04em;
+}
+
+/* Main layout */
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  min-height: 0;
+}
+
+/* Preview */
+.preview {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  overflow-y: auto;
+}
+
+.preview__label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.preview__block {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview__display {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.preview__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.preview__body {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 52ch;
+  color: var(--ink);
+}
+
+.preview__small {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+
+/* lp-word override for body text so word spacing doesn't break prose */
+.preview__body .lp-word {
+  display: inline;
+}
+
+/* Panel */
+.panel {
+  background: var(--panel-bg);
+  color: var(--panel-text);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+.panel__section-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.75rem;
+}
+
+.panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.panel__field-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel__field-value {
+  color: rgba(255,255,255,0.9);
+  font-variant-numeric: tabular-nums;
+}
+
+.panel__range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 1px;
+  outline: none;
+  cursor: pointer;
+}
+
+.panel__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--panel-text);
+  cursor: pointer;
+}
+
+.panel__range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--panel-text);
+  border: none;
+  cursor: pointer;
+}
+
+.panel__text-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: var(--panel-text);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 0.4rem 0.6rem;
+  width: 100%;
+  outline: none;
+}
+
+.panel__text-input:focus {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.panel__button {
+  width: 100%;
+  padding: 0.6rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  color: var(--panel-text);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.panel__button:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.panel__divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.panel__copy-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.panel__code {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  padding: 0.6rem;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  word-break: break-all;
+  line-height: 1.5;
+}
